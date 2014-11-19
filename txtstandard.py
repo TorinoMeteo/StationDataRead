@@ -254,14 +254,6 @@ def gettxtdata(StationID,data,DTParser, TParser, LastRead):
 			station['fetch_ok'] = False
 			print "not fetched"
 
-	except url.HTTPError, e:
-		print "HTTP Error: %r" %e
-		station['fetch_ok'] = False
-		print "not fetched"
-	except url.URLError, e:
-		print "URL Error: %r" %e
-		station['fetch_ok'] = False
-		print "not fetched"
 	except ValueError, e:
 		print "Parsing Error: %r" %e
 		station['fetch_ok'] = False

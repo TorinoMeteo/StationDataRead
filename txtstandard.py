@@ -1,14 +1,13 @@
-import urllib2 as url
 from datetime import datetime as DT
 from time import strftime
 import re
 
-station = {'fetch_ok': False, 'datetime': None, 'weather': None, 'temperature': None, 'temperature_max': None, 'temperature_max_time': None, 'temperature_min': None, 'temperature_min_time': None, 'relative_humidity': None, 'relative_humidity_max': None, 'relative_humidity_max_time': None, 'relative_humidity_min': None, 'relative_humidity_min_time': None, 'dewpoint': None, 'dewpoint_max': None, 'dewpoint_max_time': None, 'dewpoint_min': None, 'dewpoint_min_time': None, 'pressure': None, 'pressure_max': None, 'pressure_max_time': None, 'pressure_min': None, 'pressure_min_time': None, 'wind_strength': None, 'wind_dir': None, 'wind_strength_max': None, 'wind_dir_max': None, 'wind_max_time': None, 'rain': None, 'rain_rate': None, 'rain_rate_max': None, 'rain_rate_max_time': None, 'rain_month': None, 'rain_year':None}
+station = {'st_id': None, 'fetch_ok': False, 'datetime': None, 'weather': None, 'temperature': None, 'temperature_max': None, 'temperature_max_time': None, 'temperature_min': None, 'temperature_min_time': None, 'relative_humidity': None, 'relative_humidity_max': None, 'relative_humidity_max_time': None, 'relative_humidity_min': None, 'relative_humidity_min_time': None, 'dewpoint': None, 'dewpoint_max': None, 'dewpoint_max_time': None, 'dewpoint_min': None, 'dewpoint_min_time': None, 'pressure': None, 'pressure_max': None, 'pressure_max_time': None, 'pressure_min': None, 'pressure_min_time': None, 'wind_strength': None, 'wind_dir': None, 'wind_strength_max': None, 'wind_dir_max': None, 'wind_max_time': None, 'rain': None, 'rain_rate': None, 'rain_rate_max': None, 'rain_rate_max_time': None, 'rain_month': None, 'rain_year':None}
 
 
-def gettxtdata(urlfield, DTParser, TParser, LastRead):
+def gettxtdata(StationID,data,DTParser, TParser, LastRead):
 	try:	
-		data = url.urlopen(url=str(urlfield),timeout=10000).read(20000)
+		station['st_id'] = StationID
 		data = re.sub('<.*?>', "", data)
 		data = re.sub(' ', "", data)
 		data = re.sub(',', ".", data)
